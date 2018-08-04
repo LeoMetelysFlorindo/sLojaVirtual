@@ -1,0 +1,28 @@
+
+BANCO DE DADOS:
+`loja`.CREATE DATABASE `loja` /*!40100 DEFAULT CHARACTER SET latin1 */;
+
+
+ 
+TABELA produto
+DROP TABLE IF EXISTS `loja`.`produto`;
+CREATE TABLE  `loja`.`produto` (
+  `codigo` int(11) NOT NULL DEFAULT '0',
+  `Nome` varchar(75) DEFAULT NULL,
+  `precounitario` varchar(10) DEFAULT NULL,
+  `dataprod` varchar(10) DEFAULT NULL,
+  `quant` int(11) DEFAULT NULL,
+  PRIMARY KEY (`codigo`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+// stored procedure sp_ins
+STORED PROCEDURE sp_ins
+DELIMITER $$
+
+DROP PROCEDURE IF EXISTS `loja`.`sp_ins`$$
+CREATE DEFINER=`intranetadmin`@`172.16.5.43` PROCEDURE  `loja`.`sp_ins`(in scod int, snome varchar(75), preco decimal(8,2), dateprd varchar(10), qtd int)
+BEGIN
+  insert into `loja`.`produto` values (scod,snome,preco,dateprd,qtd);
+END $$
+
+DELIMITER ;
